@@ -1,0 +1,125 @@
+.contact {
+  padding: 8rem 0;
+  background: var(--dark);
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 2rem;
+  transition: all 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(139, 92, 246, 0.15);
+  border-radius: 15px;
+  color: var(--primary);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.contact-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.contact-item a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.contact-item a:hover {
+  color: var(--secondary);
+}
+
+.contact-item p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-form {
+  padding: 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: white;
+  transition: all 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-form .btn {
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 5rem 0;
+  }
+
+  .contact-form {
+    padding: 2rem;
+  }
+
+  .contact-item {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,71 @@
+.expertise {
+  padding: 8rem 0;
+  background: var(--dark-light);
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.expertise-card {
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.expertise-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+
+.expertise-card:hover::before {
+  transform: scaleX(1);
+}
+
+.expertise-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.5));
+}
+
+.expertise-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.expertise-card p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+}
+
+@media (max-width: 1024px) {
+  .expertise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .expertise {
+    padding: 5rem 0;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-card {
+    padding: 2.5rem 2rem;
+  }
+}
