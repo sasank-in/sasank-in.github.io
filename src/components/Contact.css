@@ -33,12 +33,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(139, 92, 246, 0.15);
+  background: rgba(11, 61, 145, 0.2);
   border-radius: 15px;
   color: var(--primary);
   font-size: 1.5rem;
   flex-shrink: 0;
-  border: 1px solid rgba(139, 92, 246, 0.3);
+  border: 1px solid rgba(11, 61, 145, 0.4);
 }
 
 .contact-item h4 {
@@ -59,7 +59,7 @@
 }
 
 .contact-item p {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(229, 231, 235, 0.75);
 }
 
 .contact-form {
@@ -92,7 +92,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary);
-  background: rgba(139, 92, 246, 0.05);
+  background: rgba(11, 61, 145, 0.08);
 }
 
 .form-group textarea {

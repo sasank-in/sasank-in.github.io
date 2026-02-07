@@ -1,7 +1,7 @@
 .footer {
   background: var(--dark-light);
   padding: 4rem 0 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-content {
@@ -9,7 +9,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-left {
@@ -41,9 +41,9 @@
   gap: 0.5rem;
   transition: all 0.3s;
   padding: 0.8rem 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .footer-links a:hover {

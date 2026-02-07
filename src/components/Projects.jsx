@@ -22,7 +22,7 @@ const Projects = () => {
         'REST API'
       ],
       link: 'https://www.moments-athletics.com',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      gradient: 'linear-gradient(135deg, #0b3d91 0%, #0f6fa8 100%)',
     }
     ,
     {
@@ -38,8 +38,8 @@ const Projects = () => {
         'LangChain',
         'AI Automation'
       ],
-      link: 'https://github.com/your-username/resume-analyzer',
-      gradient: 'linear-gradient(135deg, #43cea2 0%, #185a9d 100%)',
+      link: 'https://github.com/sasank-in/Resume-Intelligence-Platform',
+      gradient: 'linear-gradient(135deg, #163a5f 0%, #2f6b8f 100%)',
     }
     ,
     {
@@ -54,8 +54,8 @@ const Projects = () => {
       'Statistics',
       'ML Ops'
     ],
-    link: 'https://github.com/your-username/ml-drift-detection',
-    gradient: 'linear-gradient(135deg, #ff512f 0%, #dd2476 100%)',
+    link: 'https://github.com/sasank-in/ML-Pipeline-with-Drift-Detection-Auto-Retraining',
+    gradient: 'linear-gradient(135deg, #0f6fa8 0%, #22c1c3 100%)',
   },
   ]
 
