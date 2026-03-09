@@ -43,8 +43,8 @@ export const profile = {
   name: "Sasank Nukala",
   title: "Backend Developer | Machine Learning Engineer",
   summary:
-    "Systems-focused AI engineer specializing in scalable machine learning infrastructure, computer vision pipelines, and distributed training systems. Passionate about building robust, production-ready AI solutions that bridge the gap between research and real-world applications.",
-  avatarSrc: "/sasank-nukala-headshot.png",
+    "Systems-focused AI Engineer specializing in computer vision, scalable machine learning pipelines, and backend-driven AI applications. Passionate about building robust, production-ready AI systems that bridge the gap between research and real-world deployment.",
+  avatarSrc: "/sasank-nukala-headshot.jpg",
   resumeUrl:
     "https://drive.google.com/file/d/1akj0_eIeE1HJ3uhXNEXWYR90vQ5dqNHv/view?usp=drive_link",
   social: {
@@ -78,7 +78,11 @@ export const projects: Project[] = [
       "High-performance computer vision system for industrial quality control with sub-millisecond inference times.",
     technologies: ["PyTorch", "CUDA", "OpenCV", "YOLO", "TrackNet"],
     imageUrl: "/tennis-analysis.jpg",
-    links: {},
+    links: {
+      github: "https://github.com/your-handle/tennis-match-analysis",
+      demo: "https://tennis-analysis.example.com",
+      caseStudy: "https://yourdomain.com/case-studies/tennis-match-analysis",
+    },
   },
   {
     id: "2",
@@ -87,7 +91,11 @@ export const projects: Project[] = [
       "Built a monitoring system to track model performance and detect distribution changes in production data. The system continuously analyzes incoming data streams and compares them with training data distributions to identify potential drift.",
     technologies: ["Python", "PyTorch", "Deep Learning", "Statistics"],
     imageUrl: "/gpu-cluster-training.png",
-    links: {},
+    links: {
+      github: "https://github.com/your-handle/ml-drift-monitoring",
+      demo: "https://ml-drift.example.com",
+      caseStudy: "https://yourdomain.com/case-studies/ml-drift-monitoring",
+    },
   },
   {
     id: "3",
@@ -96,7 +104,11 @@ export const projects: Project[] = [
       "Advanced segmentation model combining RGB, depth, and thermal data for autonomous navigation.",
     technologies: ["Java", "Spring Boot", "Spring Cloud", "PostgreSQL"],
     imageUrl: "/autonomous-vehicle-segmentation.png",
-    links: {},
+    links: {
+      github: "https://github.com/your-handle/spring-microservices-backend",
+      demo: "https://microservices.example.com",
+      caseStudy: "https://yourdomain.com/case-studies/spring-microservices",
+    },
   },
   {
     id: "4",
@@ -105,7 +117,11 @@ export const projects: Project[] = [
       "AI-powered platform that analyzes resumes, extracts key information, and generates intelligent summaries and insights. Utilizes NLP pipelines to process resume documents and provide structured outputs for easier candidate evaluation.",
     technologies: ["Python", "LangChain", "PyTorch", "FastAPI", "NLP"],
     imageUrl: "/diffusion-model-synthetic-data.png",
-    links: {},
+    links: {
+      github: "https://github.com/your-handle/resume-intelligence-platform",
+      demo: "https://resume-ai.example.com",
+      caseStudy: "https://yourdomain.com/case-studies/resume-intelligence",
+    },
   },
 ]
 

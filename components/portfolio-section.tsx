@@ -26,12 +26,26 @@ import {
 import { useState } from "react"
 
 const MAX_TECH_BADGES = 4
+const MAX_DESCRIPTION_CHARS = 80
 
 export default function PortfolioSection() {
   const [openCertificates, setOpenCertificates] = useState<{ [key: string]: boolean }>({})
+  const [expandedProjects, setExpandedProjects] = useState<{ [key: string]: boolean }>({})
 
   const toggleCertificate = (id: string) => {
     setOpenCertificates((prev) => ({ ...prev, [id]: !prev[id] }))
+  }
+
+  const toggleProjectDescription = (id: string) => {
+    setExpandedProjects((prev) => ({ ...prev, [id]: !prev[id] }))
+  }
+
+  const getProjectDescription = (id: string, description: string) => {
+    const isExpanded = expandedProjects[id]
+    if (isExpanded || description.length <= MAX_DESCRIPTION_CHARS) {
+      return description
+    }
+    return `${description.slice(0, MAX_DESCRIPTION_CHARS).trim()}...`
   }
 
   return (
@@ -120,7 +134,10 @@ export default function PortfolioSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
-              <Card key={project.id} className="hover:shadow-md transition-shadow duration-200">
+              <Card
+                key={project.id}
+                className="pt-0 overflow-hidden hover:shadow-md transition-shadow duration-200"
+              >
                 <div className="relative aspect-video overflow-hidden rounded-t-lg">
                   <Image
                     src={project.imageUrl || "/placeholder.svg"}
@@ -132,7 +149,18 @@ export default function PortfolioSection() {
                 </div>
                 <CardHeader>
                   <CardTitle className="text-lg">{project.title}</CardTitle>
-                  <CardDescription className="text-sm">{project.description}</CardDescription>
+                  <CardDescription className="text-sm">
+                    {getProjectDescription(project.id, project.description)}
+                  </CardDescription>
+                  {project.description.length > MAX_DESCRIPTION_CHARS && (
+                    <Button
+                      variant="link"
+                      className="px-0 h-auto text-primary"
+                      onClick={() => toggleProjectDescription(project.id)}
+                    >
+                      {expandedProjects[project.id] ? "Read less" : "Read more"}
+                    </Button>
+                  )}
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-1 mb-4">
