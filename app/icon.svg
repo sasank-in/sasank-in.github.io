@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="AI strength favicon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#0B7A75"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#g)"/>
+  <path d="M128 42 200 84v88l-72 42-72-42V84l72-42Z" fill="none" stroke="#E2E8F0" stroke-width="10"/>
+  <circle cx="128" cy="128" r="34" fill="none" stroke="#F8FAFC" stroke-width="10"/>
+  <circle cx="128" cy="128" r="10" fill="#F8FAFC"/>
+  <circle cx="128" cy="60" r="6" fill="#F8FAFC"/>
+  <circle cx="196" cy="96" r="6" fill="#F8FAFC"/>
+  <circle cx="196" cy="160" r="6" fill="#F8FAFC"/>
+  <circle cx="128" cy="196" r="6" fill="#F8FAFC"/>
+  <circle cx="60" cy="160" r="6" fill="#F8FAFC"/>
+  <circle cx="60" cy="96" r="6" fill="#F8FAFC"/>
+  <path d="M128 60v34M196 96h-34M196 160h-34M128 196v-34M60 160h34M60 96h34" stroke="#F8FAFC" stroke-width="8" stroke-linecap="round"/>
+</svg>

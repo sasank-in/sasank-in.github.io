@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   description:
     "Systems-focused AI engineer portfolio showcasing computer vision, automation, and generative modeling projects",
   generator: "v0.app",
+  icons: {
+    icon: "/icon.svg",
+  },
 }
 
 export default function RootLayout({
