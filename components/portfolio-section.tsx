@@ -53,62 +53,64 @@ export default function PortfolioSection() {
       <div className="container mx-auto px-4 py-16">
         {/* Header & Tagline */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 mb-8">
-            <div className="flex-shrink-0">
-              <div className="relative w-32 h-32">
-                <Image
-                  src={profile.avatarSrc}
-                  alt={profile.name}
-                  fill
-                  sizes="128px"
-                  className="rounded-full object-cover border-4 border-primary/20"
-                  priority
-                />
+          <div className="rounded-2xl border border-border/40 bg-transparent px-6 py-8 shadow-[0_0_0_1px_rgba(148,163,184,0.15),0_18px_40px_-24px_rgba(15,23,42,0.8)]">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+              <div className="flex-shrink-0">
+                <div className="relative w-32 h-32">
+                  <Image
+                    src={profile.avatarSrc}
+                    alt={profile.name}
+                    fill
+                    sizes="128px"
+                    className="rounded-full object-cover border-4 border-white/20"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <h1 className="text-4xl font-bold text-foreground mb-2">{profile.name}</h1>
-              <p className="text-xl text-primary font-medium mb-4">{profile.title}</p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                {profile.summary}
-              </p>
+              <div className="flex-1 text-center md:text-left">
+                <h1 className="text-4xl font-bold text-foreground mb-2">{profile.name}</h1>
+                <p className="text-xl text-primary font-medium mb-4">{profile.title}</p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  {profile.summary}
+                </p>
 
-              <div className="flex justify-center md:justify-start gap-4">
-                <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
-                  <a
-                    href={profile.social.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub profile"
-                  >
-                    <Github className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
-                  <a
-                    href={profile.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn profile"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
-                  <a
-                    href={profile.resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="View resume"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
-                  <a href={profile.social.email} aria-label="Send email">
-                    <Mail className="h-4 w-4" />
-                  </a>
-                </Button>
+                <div className="flex justify-center md:justify-start gap-4">
+                  <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                    <a
+                      href={profile.social.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub profile"
+                    >
+                      <Github className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                    <a
+                      href={profile.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn profile"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                    <a
+                      href={profile.resumeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View resume"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
+                    <a href={profile.social.email} aria-label="Send email">
+                      <Mail className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
