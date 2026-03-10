@@ -25,7 +25,7 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 
-const MAX_TECH_BADGES = 4
+const MAX_TECH_BADGES = 5
 const MAX_DESCRIPTION_CHARS = 80
 
 export default function PortfolioSection() {
@@ -151,16 +151,16 @@ export default function PortfolioSection() {
                   <CardTitle className="text-lg">{project.title}</CardTitle>
                   <CardDescription className="text-sm">
                     {getProjectDescription(project.id, project.description)}
+                    {project.description.length > MAX_DESCRIPTION_CHARS && (
+                      <Button
+                        variant="link"
+                        className="ml-1 h-auto px-0 text-primary align-baseline"
+                        onClick={() => toggleProjectDescription(project.id)}
+                      >
+                        {expandedProjects[project.id] ? "Read less" : "Read more"}
+                      </Button>
+                    )}
                   </CardDescription>
-                  {project.description.length > MAX_DESCRIPTION_CHARS && (
-                    <Button
-                      variant="link"
-                      className="px-0 h-auto text-primary"
-                      onClick={() => toggleProjectDescription(project.id)}
-                    >
-                      {expandedProjects[project.id] ? "Read less" : "Read more"}
-                    </Button>
-                  )}
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-1 mb-4">
@@ -175,43 +175,12 @@ export default function PortfolioSection() {
                       </Badge>
                     )}
                   </div>
-                  {project.links &&
-                  (project.links.github || project.links.demo || project.links.caseStudy) ? (
-                    <div className="grid grid-cols-3 gap-2">
-                      {project.links.github ? (
-                        <Button variant="outline" className="bg-transparent" asChild>
-                          <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                            GitHub
-                          </a>
-                        </Button>
-                      ) : (
-                        <Button variant="outline" className="bg-transparent" disabled>
-                          GitHub
-                        </Button>
-                      )}
-                      {project.links.demo ? (
-                        <Button variant="outline" className="bg-transparent" asChild>
-                          <a href={project.links.demo} target="_blank" rel="noopener noreferrer">
-                            Live
-                          </a>
-                        </Button>
-                      ) : (
-                        <Button variant="outline" className="bg-transparent" disabled>
-                          Live
-                        </Button>
-                      )}
-                      {project.links.caseStudy ? (
-                        <Button variant="outline" className="bg-transparent" asChild>
-                          <a href={project.links.caseStudy} target="_blank" rel="noopener noreferrer">
-                            Case Study
-                          </a>
-                        </Button>
-                      ) : (
-                        <Button variant="outline" className="bg-transparent" disabled>
-                          Case Study
-                        </Button>
-                      )}
-                    </div>
+                  {project.link ? (
+                    <Button variant="outline" className="w-full bg-transparent" asChild>
+                      <a href={project.link.url} target="_blank" rel="noopener noreferrer">
+                        {project.link.label ?? "View Project"}
+                      </a>
+                    </Button>
                   ) : (
                     <Button variant="outline" className="w-full bg-transparent" disabled>
                       Details Soon

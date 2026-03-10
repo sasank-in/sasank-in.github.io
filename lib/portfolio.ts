@@ -1,7 +1,6 @@
 export interface ProjectLinkSet {
-  github?: string
-  demo?: string
-  caseStudy?: string
+  label?: string
+  url: string
 }
 
 export interface Project {
@@ -10,7 +9,7 @@ export interface Project {
   description: string
   technologies: string[]
   imageUrl: string
-  links?: ProjectLinkSet
+  link?: ProjectLinkSet
 }
 
 export interface Experience {
@@ -78,10 +77,9 @@ export const projects: Project[] = [
       "High-performance computer vision system for industrial quality control with sub-millisecond inference times.",
     technologies: ["PyTorch", "CUDA", "OpenCV", "YOLO", "TrackNet"],
     imageUrl: "/tennis-analysis.jpg",
-    links: {
-      github: "https://github.com/your-handle/tennis-match-analysis",
-      demo: "https://tennis-analysis.example.com",
-      caseStudy: "https://yourdomain.com/case-studies/tennis-match-analysis",
+    link: {
+      label: "Website",
+      url: "https://www.moments-athletics.com",
     },
   },
   {
@@ -91,10 +89,9 @@ export const projects: Project[] = [
       "Built a monitoring system to track model performance and detect distribution changes in production data. The system continuously analyzes incoming data streams and compares them with training data distributions to identify potential drift.",
     technologies: ["Python", "PyTorch", "Deep Learning", "Statistics"],
     imageUrl: "/gpu-cluster-training.png",
-    links: {
-      github: "https://github.com/your-handle/ml-drift-monitoring",
-      demo: "https://ml-drift.example.com",
-      caseStudy: "https://yourdomain.com/case-studies/ml-drift-monitoring",
+    link: {
+      label: "Github",
+      url: "https://github.com/sasank-in/ML-Pipeline-with-Drift-Detection-Auto-Retraining",
     },
   },
   {
@@ -102,12 +99,11 @@ export const projects: Project[] = [
     title: "Spring Boot Microservices Backend System",
     description:
       "Advanced segmentation model combining RGB, depth, and thermal data for autonomous navigation.",
-    technologies: ["Java", "Spring Boot", "Spring Cloud", "PostgreSQL"],
+    technologies: ["Spring Boot", "Spring Cloud", "PostgreSQL","Microservices"],
     imageUrl: "/autonomous-vehicle-segmentation.png",
-    links: {
-      github: "https://github.com/your-handle/spring-microservices-backend",
-      demo: "https://microservices.example.com",
-      caseStudy: "https://yourdomain.com/case-studies/spring-microservices",
+    link: {
+      label: "GitHub",
+      url: "https://github.com/your-handle/spring-microservices-backend",
     },
   },
   {
@@ -117,10 +113,9 @@ export const projects: Project[] = [
       "AI-powered platform that analyzes resumes, extracts key information, and generates intelligent summaries and insights. Utilizes NLP pipelines to process resume documents and provide structured outputs for easier candidate evaluation.",
     technologies: ["Python", "LangChain", "PyTorch", "FastAPI", "NLP"],
     imageUrl: "/diffusion-model-synthetic-data.png",
-    links: {
-      github: "https://github.com/your-handle/resume-intelligence-platform",
-      demo: "https://resume-ai.example.com",
-      caseStudy: "https://yourdomain.com/case-studies/resume-intelligence",
+    link: {
+      label: "Github",
+      url: "https://github.com/sasank-in/Resume-Intelligence-Platform",
     },
   },
 ]

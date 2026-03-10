@@ -10,7 +10,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "AI Engineering Portfolio",
+  title: "Sasank Nukala",
   description:
     "Systems-focused AI engineer portfolio showcasing computer vision, automation, and generative modeling projects",
   generator: "v0.app",
