@@ -56,15 +56,17 @@ export default function PortfolioSection() {
           <div className="rounded-2xl border border-border/40 bg-transparent px-6 py-8 shadow-[0_0_0_1px_rgba(148,163,184,0.15),0_18px_40px_-24px_rgba(15,23,42,0.8)]">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="flex-shrink-0">
-                <div className="relative w-32 h-32">
-                  <Image
-                    src={profile.avatarSrc}
-                    alt={profile.name}
-                    fill
-                    sizes="128px"
-                    className="rounded-full object-cover border-4 border-white/20"
-                    priority
-                  />
+                <div className="rounded-full bg-[conic-gradient(from_-90deg,#FF9933_0deg,#FF9933_120deg,#FFFFFF_120deg,#FFFFFF_240deg,#138808_240deg,#138808_360deg)] p-[3px] shadow-sm">
+                  <div className="relative h-28 w-28 rounded-full bg-background">
+                    <Image
+                      src={profile.avatarSrc}
+                      alt={profile.name}
+                      fill
+                      sizes="112px"
+                      className="rounded-full object-cover"
+                      priority
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex-1 text-center md:text-left">

@@ -45,7 +45,7 @@ export const profile = {
     "Systems-focused AI Engineer specializing in computer vision, scalable machine learning pipelines, and backend-driven AI applications. Passionate about building robust, production-ready AI systems that bridge the gap between research and real-world deployment.",
   avatarSrc: "/sasank-nukala-headshot.jpg",
   resumeUrl:
-    "https://drive.google.com/file/d/1akj0_eIeE1HJ3uhXNEXWYR90vQ5dqNHv/view?usp=drive_link",
+    "https://drive.google.com/file/d/1IiLbFjKzvSq6PFoAXRzizTK6K3KKn2Si/view?usp=drive_link",
   social: {
     github: "https://github.com/sasank-in",
     linkedin: "https://linkedin.com/in/sasank-nukala",
@@ -62,6 +62,8 @@ export const skills = [
   "Spring Boot",
   "Spring Cloud",
   "Django REST Framework",
+  "Microservices",
+  "Deep Learning",
   "Git",
   "OpenCV",
   "YOLO",
@@ -74,7 +76,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Tennis Match Analysis System",
     description:
-      "High-performance computer vision system for industrial quality control with sub-millisecond inference times.",
+      "High-performance computer vision system for industrial quality control with sub-millisecond inference times. Utilized PyTorch and CUDA for optimized model training and inference, and YOLO for accurate object detection. Implemented TrackNet architecture for robust ball detection.",
     technologies: ["PyTorch", "CUDA", "OpenCV", "YOLO", "TrackNet"],
     imageUrl: "/tennis-analysis.jpg",
     link: {
@@ -96,19 +98,19 @@ export const projects: Project[] = [
   },
   {
     id: "3",
-    title: "Spring Boot Microservices Backend System",
+    title: "Agriculture Trading Platform For Farmers And Retailers",
     description:
-      "Advanced segmentation model combining RGB, depth, and thermal data for autonomous navigation.",
+      "Advanced application for facilitating trade between farmers and retailers, providing a seamless platform for buying and selling agricultural products.",
     technologies: ["Spring Boot", "Spring Cloud", "PostgreSQL","Microservices"],
     imageUrl: "/autonomous-vehicle-segmentation.png",
     link: {
       label: "GitHub",
-      url: "https://github.com/your-handle/spring-microservices-backend",
+      url: "https://github.com/sasank-in/Agriculture-Platform",
     },
   },
   {
     id: "4",
-    title: "Resume Intelligence Platform",
+    title: "Resume Intelligence & Job Recommendation Platform",
     description:
       "AI-powered platform that analyzes resumes, extracts key information, and generates intelligent summaries and insights. Utilizes NLP pipelines to process resume documents and provide structured outputs for easier candidate evaluation.",
     technologies: ["Python", "LangChain", "PyTorch", "FastAPI", "NLP"],
