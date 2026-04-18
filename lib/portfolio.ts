@@ -34,6 +34,7 @@ export interface Certificate {
   title: string
   issuer: string
   issued: string
+  credentialId?: string
   description: string
   url: string
 }
@@ -41,8 +42,9 @@ export interface Certificate {
 export const profile = {
   name: "Sasank Nukala",
   title: "Backend Developer | Machine Learning Engineer",
+  location: "Hyderabad, India",
   summary:
-    "Systems-focused AI Engineer specializing in computer vision, scalable machine learning pipelines, and backend-driven AI applications. Passionate about building robust, production-ready AI systems that bridge the gap between research and real-world deployment.",
+    "I build backend systems for computer vision and ML workloads — training pipelines, inference APIs, and the infrastructure that keeps models running reliably in production.",
   avatarSrc: "/sasank-nukala-headshot.jpg",
   resumeUrl:
     "https://drive.google.com/file/d/1IiLbFjKzvSq6PFoAXRzizTK6K3KKn2Si/view?usp=drive_link",
@@ -51,25 +53,36 @@ export const profile = {
     linkedin: "https://linkedin.com/in/sasank-nukala",
     email: "mailto:shashanknukala7@gmail.com",
   },
+  contact: {
+    emailAddress: "shashanknukala7@gmail.com",
+  },
 }
 
-export const skills = [
-  "Python",
-  "Java",
-  "PyTorch",
-  "FastAPI",
-  "SQL (MySQL & PostgreSQL)",
-  "Spring Boot",
-  "Spring Cloud",
-  "Django REST Framework",
-  "Microservices",
-  "Deep Learning",
-  "Git",
-  "OpenCV",
-  "YOLO",
-  "Dataset Annotation",
-  "LangChain"
+export interface SkillGroup {
+  category: string
+  items: string[]
+}
+
+export const skillGroups: SkillGroup[] = [
+  {
+    category: "Languages",
+    items: ["Python", "Java", "SQL (MySQL & PostgreSQL)"],
+  },
+  {
+    category: "Backend",
+    items: ["FastAPI", "Spring Boot", "Spring Cloud", "Django REST Framework", "Microservices"],
+  },
+  {
+    category: "ML & Computer Vision",
+    items: ["PyTorch", "Deep Learning", "OpenCV", "YOLO", "LangChain", "Dataset Annotation"],
+  },
+  {
+    category: "Tools",
+    items: ["Git"],
+  },
 ]
+
+export const skills = skillGroups.flatMap((group) => group.items)
 
 export const projects: Project[] = [
   {
@@ -92,7 +105,7 @@ export const projects: Project[] = [
     technologies: ["Python", "PyTorch", "Deep Learning", "Statistics"],
     imageUrl: "/gpu-cluster-training.png",
     link: {
-      label: "Github",
+      label: "GitHub",
       url: "https://github.com/sasank-in/ML-Pipeline-with-Drift-Detection-Auto-Retraining",
     },
   },
@@ -116,7 +129,7 @@ export const projects: Project[] = [
     technologies: ["Python", "LangChain", "PyTorch", "FastAPI", "NLP"],
     imageUrl: "/diffusion-model-synthetic-data.png",
     link: {
-      label: "Github",
+      label: "GitHub",
       url: "https://github.com/sasank-in/Resume-Intelligence-Platform",
     },
   },
@@ -129,7 +142,7 @@ export const experiences: Experience[] = [
     type: "Internship",
     start: "Jan 2025",
     end: "Sep 2025",
-    duration: "0 yr 9 mos",
+    duration: "9 mos",
     summary:
       "Leading the development of scalable ML infrastructure and deployment pipelines. Architected distributed training systems that reduced model training time by 60%. Implemented MLOps best practices including automated testing, monitoring, and continuous deployment for production ML models. Built REST APIs for serving model inference and structured analytics data.",
   },
@@ -139,7 +152,7 @@ export const experiences: Experience[] = [
     type: "Internship",
     start: "Mar 2024",
     end: "Jun 2024",
-    duration: "0 yr 4 mos",
+    duration: "4 mos",
     summary:
       "Developed backend services for a payroll management system using Django REST Framework. Implemented secure authentication using JWT, designed relational database schemas, and automated scheduled tasks using Celery for payroll processing workflows.",
   },
@@ -168,6 +181,7 @@ export const certificates: Certificate[] = [
     title: "Meta Backend Developer Professional Certificate",
     issuer: "Coursera",
     issued: "Issued Aug 2025",
+    credentialId: "O5B8I7A6PRZY",
     description:
       "Comprehensive professional certificate covering backend development fundamentals, API design, database management, and cloud deployment. Includes hands-on projects with Python, Django, and cloud infrastructure.",
     url: "https://www.coursera.org/account/accomplishments/specialization/certificate/O5B8I7A6PRZY",
@@ -177,6 +191,7 @@ export const certificates: Certificate[] = [
     title: "Deep Learning Specialization",
     issuer: "Coursera",
     issued: "Issued Oct 2024",
+    credentialId: "EXTTCNXPGS8D",
     description:
       "5-course specialization covering neural networks, deep learning, convolutional networks, RNNs, and sequence models. Hands-on projects included building and training neural networks from scratch using Python and TensorFlow.",
     url: "https://www.coursera.org/account/accomplishments/specialization/certificate/EXTTCNXPGS8D",
@@ -186,6 +201,7 @@ export const certificates: Certificate[] = [
     title: "Google Data Analytics Professional Certificate",
     issuer: "Coursera",
     issued: "Issued Feb 2024",
+    credentialId: "7GYYFT92429P",
     description:
       "Comprehensive program covering data analysis fundamentals, data cleaning, visualization, and statistical analysis. Practical experience with tools like SQL, R, Tableau, and spreadsheets for data-driven decision making.",
     url: "https://www.coursera.org/account/accomplishments/specialization/certificate/7GYYFT92429P",

@@ -22,6 +22,7 @@ import {
   ExternalLink,
   ChevronDown,
   Award,
+  MapPin,
 } from "lucide-react"
 import { useState } from "react"
 
@@ -56,7 +57,7 @@ export default function PortfolioSection() {
           <div className="rounded-2xl border border-border/40 bg-transparent px-6 py-8 shadow-[0_0_0_1px_rgba(148,163,184,0.15),0_18px_40px_-24px_rgba(15,23,42,0.8)]">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="flex-shrink-0">
-                <div className="rounded-full bg-[conic-gradient(from_-90deg,#FF9933_0deg,#FF9933_120deg,#FFFFFF_120deg,#FFFFFF_240deg,#138808_240deg,#138808_360deg)] p-[3px] shadow-sm">
+                <div className="rounded-full bg-[conic-gradient(from_-90deg,#FF9933_0deg,#FF9933_120deg,#1E4DB7_120deg,#1E4DB7_240deg,#138808_240deg,#138808_360deg)] p-[3px] shadow-sm">
                   <div className="relative h-28 w-28 rounded-full bg-background">
                     <Image
                       src={profile.avatarSrc}
@@ -71,7 +72,11 @@ export default function PortfolioSection() {
               </div>
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-4xl font-bold text-foreground mb-2">{profile.name}</h1>
-                <p className="text-xl text-primary font-medium mb-4">{profile.title}</p>
+                <p className="text-xl text-primary font-medium mb-3">{profile.title}</p>
+                <p className="text-sm text-muted-foreground mb-4 flex items-center justify-center md:justify-start gap-1.5">
+                  <MapPin className="h-4 w-4" />
+                  {profile.location}
+                </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   {profile.summary}
                 </p>
@@ -140,9 +145,9 @@ export default function PortfolioSection() {
             {projects.map((project) => (
               <Card
                 key={project.id}
-                className="pt-0 overflow-hidden hover:shadow-md transition-shadow duration-200"
+                className="pt-0 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200"
               >
-                <div className="relative aspect-video overflow-hidden rounded-t-lg">
+                <div className="relative aspect-video overflow-hidden rounded-t-xl">
                   <Image
                     src={project.imageUrl || "/placeholder.svg"}
                     alt={project.title}
@@ -155,19 +160,19 @@ export default function PortfolioSection() {
                   <CardTitle className="text-lg">{project.title}</CardTitle>
                   <CardDescription className="text-sm">
                     {getProjectDescription(project.id, project.description)}
-                    {project.description.length > MAX_DESCRIPTION_CHARS && (
-                      <Button
-                        variant="link"
-                        className="ml-1 h-auto px-0 text-primary align-baseline"
-                        onClick={() => toggleProjectDescription(project.id)}
-                      >
-                        {expandedProjects[project.id] ? "Read less" : "Read more"}
-                      </Button>
-                    )}
                   </CardDescription>
+                  {project.description.length > MAX_DESCRIPTION_CHARS && (
+                    <button
+                      type="button"
+                      onClick={() => toggleProjectDescription(project.id)}
+                      className="mt-1 self-start text-sm font-medium text-primary hover:underline"
+                    >
+                      {expandedProjects[project.id] ? "Read less" : "Read more"}
+                    </button>
+                  )}
                 </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-1 mb-4">
+                <CardContent className="flex flex-1 flex-col">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, MAX_TECH_BADGES).map((tech) => (
                       <Badge key={tech} variant="outline" className="text-xs">
                         {tech}
@@ -180,13 +185,13 @@ export default function PortfolioSection() {
                     )}
                   </div>
                   {project.link ? (
-                    <Button variant="outline" className="w-full bg-transparent" asChild>
+                    <Button variant="outline" className="mt-auto w-full bg-transparent" asChild>
                       <a href={project.link.url} target="_blank" rel="noopener noreferrer">
                         {project.link.label ?? "View Project"}
                       </a>
                     </Button>
                   ) : (
-                    <Button variant="outline" className="w-full bg-transparent" disabled>
+                    <Button variant="outline" className="mt-auto w-full bg-transparent" disabled>
                       Details Soon
                     </Button>
                   )}
@@ -297,6 +302,12 @@ export default function PortfolioSection() {
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {certificate.description}
                       </p>
+                      {certificate.credentialId && (
+                        <p className="mt-2 text-xs text-muted-foreground">
+                          Credential ID:{" "}
+                          <span className="font-mono text-foreground">{certificate.credentialId}</span>
+                        </p>
+                      )}
                       <Button variant="link" className="p-0 h-auto text-primary" asChild>
                         <a href={certificate.url} target="_blank" rel="noopener noreferrer">
                           View Certificate
@@ -310,7 +321,35 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        
+        {/* Contact / Get in touch */}
+        <div className="max-w-4xl mx-auto">
+          <Card className="border-border/50">
+            <CardContent className="p-8 text-center">
+              <h2 className="text-2xl font-bold text-foreground mb-2">Get in touch</h2>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                Open to backend and ML engineering roles. Drop a note or book a quick chat — I usually reply within a day.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button asChild>
+                  <a href={profile.social.email}>
+                    <Mail className="h-4 w-4 mr-2" />
+                    {profile.contact.emailAddress}
+                  </a>
+                </Button>
+                <Button variant="outline" className="bg-transparent" asChild>
+                  <a
+                    href={profile.social.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Linkedin className="h-4 w-4 mr-2" />
+                    Message on LinkedIn
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   )
