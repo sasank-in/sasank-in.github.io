@@ -19,10 +19,10 @@ import {
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
   ChevronDown,
   Award,
   MapPin,
+  FileText,
 } from "lucide-react"
 import { useState } from "react"
 
@@ -51,13 +51,13 @@ export default function PortfolioSection() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 pt-20 pb-16">
         {/* Header & Tagline */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="rounded-2xl border border-border/40 bg-transparent px-6 py-8 shadow-[0_0_0_1px_rgba(148,163,184,0.15),0_18px_40px_-24px_rgba(15,23,42,0.8)]">
+          <div className="rounded-2xl border border-border/50 bg-transparent px-6 py-8 shadow-[0_0_0_1px_rgba(148,163,184,0.15),0_18px_40px_-24px_rgba(15,23,42,0.8)]">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
               <div className="flex-shrink-0">
-                <div className="rounded-full bg-[conic-gradient(from_-90deg,#FF9933_0deg,#FF9933_120deg,#1E4DB7_120deg,#1E4DB7_240deg,#138808_240deg,#138808_360deg)] p-[3px] shadow-sm">
+                <div className="rounded-full bg-[conic-gradient(from_-150deg,#FF9933_0deg,#FF9933_120deg,#138808_120deg,#138808_240deg,#1E4DB7_240deg,#1E4DB7_360deg)] p-[3px] shadow-sm">
                   <div className="relative h-28 w-28 rounded-full bg-background">
                     <Image
                       src={profile.avatarSrc}
@@ -73,10 +73,19 @@ export default function PortfolioSection() {
               <div className="flex-1 text-center md:text-left">
                 <h1 className="text-4xl font-bold text-foreground mb-2">{profile.name}</h1>
                 <p className="text-xl text-primary font-medium mb-3">{profile.title}</p>
-                <p className="text-sm text-muted-foreground mb-4 flex items-center justify-center md:justify-start gap-1.5">
-                  <MapPin className="h-4 w-4" />
-                  {profile.location}
-                </p>
+                <div className="flex flex-col md:flex-row items-center md:items-center justify-center md:justify-start gap-2 md:gap-3 mb-4">
+                  <p className="text-sm text-muted-foreground flex items-center gap-1.5">
+                    <MapPin className="h-4 w-4" />
+                    {profile.location}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                    </span>
+                    {profile.availability}
+                  </span>
+                </div>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   {profile.summary}
                 </p>
@@ -109,7 +118,7 @@ export default function PortfolioSection() {
                       rel="noopener noreferrer"
                       aria-label="View resume"
                     >
-                      <ExternalLink className="h-4 w-4" />
+                      <FileText className="h-4 w-4" />
                     </a>
                   </Button>
                   <Button variant="outline" size="icon" className="rounded-full bg-transparent" asChild>
@@ -123,10 +132,9 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* Skills & Tools - Simplified */}
-        <div className="max-w-4xl mx-auto mb-16">
+        {/* Skills & Tools */}
+        <div id="skills" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Skills & Tools</h2>
-
 
           <div className="flex flex-wrap gap-2 justify-center">
             {skills.map((skill) => (
@@ -137,15 +145,15 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* Featured Projects - Classic UI with 4 projects */}
-        <div className="max-w-4xl mx-auto mb-16">
+        {/* Projects */}
+        <div id="projects" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Projects</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
               <Card
                 key={project.id}
-                className="pt-0 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200"
+                className="pt-0 overflow-hidden flex flex-col border-border/50 hover:shadow-md transition-shadow duration-200"
               >
                 <div className="relative aspect-video overflow-hidden rounded-t-xl">
                   <Image
@@ -165,13 +173,23 @@ export default function PortfolioSection() {
                     <button
                       type="button"
                       onClick={() => toggleProjectDescription(project.id)}
-                      className="mt-1 self-start text-sm font-medium text-primary hover:underline"
+                      className="mt-1 self-start rounded-sm text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       {expandedProjects[project.id] ? "Read less" : "Read more"}
                     </button>
                   )}
                 </CardHeader>
                 <CardContent className="flex flex-1 flex-col">
+                  {project.metrics && project.metrics.length > 0 && (
+                    <ul className="mb-4 space-y-1">
+                      {project.metrics.map((metric) => (
+                        <li key={metric} className="text-xs text-muted-foreground flex items-start gap-2">
+                          <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary"></span>
+                          {metric}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, MAX_TECH_BADGES).map((tech) => (
                       <Badge key={tech} variant="outline" className="text-xs">
@@ -202,7 +220,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* Experience */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div id="experience" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Experience</h2>
 
           <div className="space-y-6">
@@ -216,13 +234,16 @@ export default function PortfolioSection() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-foreground mb-1">{experience.role}</h3>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        {experience.company} - {experience.type}
-                      </p>
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 className="text-lg font-semibold text-foreground">{experience.role}</h3>
+                        <Badge variant="secondary" className="text-xs">
+                          {experience.type}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-2">{experience.company}</p>
                       <p className="text-sm text-muted-foreground mb-3 flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
-                        {experience.start} - {experience.end} | {experience.duration}
+                        {experience.start} – {experience.end} · {experience.duration}
                       </p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{experience.summary}</p>
                     </div>
@@ -234,7 +255,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* Education */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div id="education" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Education</h2>
 
           <div className="space-y-6">
@@ -264,7 +285,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* Certificates & Achievements */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div id="certificates" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Certificates & Achievements</h2>
 
           <div className="space-y-4">
@@ -274,8 +295,13 @@ export default function PortfolioSection() {
                 open={openCertificates[certificate.id]}
                 onOpenChange={() => toggleCertificate(certificate.id)}
               >
-                <CollapsibleTrigger className="w-full">
-                  <Card className="border-border/50 hover:border-accent/50 transition-colors cursor-pointer">
+                <CollapsibleTrigger asChild>
+                  <Card
+                    role="button"
+                    tabIndex={0}
+                    aria-expanded={!!openCertificates[certificate.id]}
+                    className="border-border/50 hover:border-accent/50 hover:shadow-md transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
@@ -283,10 +309,12 @@ export default function PortfolioSection() {
                             <Award className="h-6 w-6 text-primary" />
                           </div>
                           <div className="text-left">
-                            <h3 className="text-lg font-semibold text-foreground">{certificate.title}</h3>
-                            <p className="text-sm text-muted-foreground">
-                              {certificate.issuer} - {certificate.issued}
-                            </p>
+                            <span className="block text-lg font-semibold text-foreground">
+                              {certificate.title}
+                            </span>
+                            <span className="block text-sm text-muted-foreground">
+                              {certificate.issuer} · {certificate.issued}
+                            </span>
                           </div>
                         </div>
                         <ChevronDown
@@ -297,7 +325,7 @@ export default function PortfolioSection() {
                   </Card>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <Card className="border-border/50 mt-2 ml-4">
+                  <Card className="border-border/50 mt-2">
                     <CardContent className="p-4">
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {certificate.description}
@@ -322,7 +350,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* Contact / Get in touch */}
-        <div className="max-w-4xl mx-auto">
+        <div id="contact" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <Card className="border-border/50">
             <CardContent className="p-8 text-center">
               <h2 className="text-2xl font-bold text-foreground mb-2">Get in touch</h2>
@@ -350,6 +378,10 @@ export default function PortfolioSection() {
             </CardContent>
           </Card>
         </div>
+
+        <footer className="max-w-4xl mx-auto border-t border-border/50 pt-6 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} {profile.name} · Built with Next.js &amp; shadcn/ui
+        </footer>
       </div>
     </div>
   )

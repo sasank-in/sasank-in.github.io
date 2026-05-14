@@ -9,6 +9,7 @@ export interface Project {
   description: string
   technologies: string[]
   imageUrl: string
+  metrics?: string[]
   link?: ProjectLinkSet
 }
 
@@ -42,7 +43,8 @@ export interface Certificate {
 export const profile = {
   name: "Sasank Nukala",
   title: "Backend Developer | Machine Learning Engineer",
-  location: "Hyderabad, India",
+  location: "Vijayawada, India",
+  availability: "Graduating May 2026 · Open to full-time roles",
   summary:
     "I build backend systems for computer vision and ML workloads — training pipelines, inference APIs, and the infrastructure that keeps models running reliably in production.",
   avatarSrc: "/sasank-nukala-headshot.jpg",
@@ -58,31 +60,24 @@ export const profile = {
   },
 }
 
-export interface SkillGroup {
-  category: string
-  items: string[]
-}
-
-export const skillGroups: SkillGroup[] = [
-  {
-    category: "Languages",
-    items: ["Python", "Java", "SQL (MySQL & PostgreSQL)"],
-  },
-  {
-    category: "Backend",
-    items: ["FastAPI", "Spring Boot", "Spring Cloud", "Django REST Framework", "Microservices"],
-  },
-  {
-    category: "ML & Computer Vision",
-    items: ["PyTorch", "Deep Learning", "OpenCV", "YOLO", "LangChain", "Dataset Annotation"],
-  },
-  {
-    category: "Tools",
-    items: ["Git"],
-  },
+export const skills = [
+  "Python",
+  "Java",
+  "SQL",
+  "FastAPI",
+  "Spring Boot",
+  "Spring Cloud",
+  "Django REST Framework",
+  "Microservices",
+  "PyTorch",
+  "LLM's",
+  "Model Fine-tuning",
+  "Deep Learning",
+  "YOLO",
+  "LangChain",
+  "Dataset Annotation",
+  "Git",
 ]
-
-export const skills = skillGroups.flatMap((group) => group.items)
 
 export const projects: Project[] = [
   {
@@ -164,14 +159,14 @@ export const education: Education[] = [
     program: "Bachelor of Technology in Computer Science - Specialization in Machine Learning & AI",
     period: "2022 - 2026",
     summary:
-      'Advanced coursework in deep learning, computer vision, and distributed systems. Thesis on "Scalable Neural Architecture Search for Edge Computing Devices" with focus on automated model optimization.',
+      'Coursework in deep learning, computer vision, operating systems, and database systems. Capstone thesis on "Scalable Neural Architecture Search for Edge Computing Devices", exploring automated model optimization for resource-constrained inference.',
   },
   {
     school: "ANU Junior College",
     program: "Intermediate (MPC) - Mathematics, Physics & Chemistry",
     period: "2020 - 2022",
     summary:
-      "Completed higher secondary education with focus on Mathematics, Physics, and Chemistry. Built a strong analytical and problem-solving foundation which later supported my transition into Computer Science and Artificial Intelligence studies.",
+      "Higher secondary education with the MPC stream — the math and physics grounding that made the jump into ML and systems work feel natural rather than abrupt.",
   },
 ]
 
@@ -183,7 +178,7 @@ export const certificates: Certificate[] = [
     issued: "Issued Aug 2025",
     credentialId: "O5B8I7A6PRZY",
     description:
-      "Comprehensive professional certificate covering backend development fundamentals, API design, database management, and cloud deployment. Includes hands-on projects with Python, Django, and cloud infrastructure.",
+      "Nine-course specialization on backend engineering with Python and Django — REST API design, authentication, relational data modelling, version control workflows, and deployment fundamentals. Capstone project: a restaurant booking and ordering API built with Django REST Framework.",
     url: "https://www.coursera.org/account/accomplishments/specialization/certificate/O5B8I7A6PRZY",
   },
   {
@@ -193,7 +188,7 @@ export const certificates: Certificate[] = [
     issued: "Issued Oct 2024",
     credentialId: "EXTTCNXPGS8D",
     description:
-      "5-course specialization covering neural networks, deep learning, convolutional networks, RNNs, and sequence models. Hands-on projects included building and training neural networks from scratch using Python and TensorFlow.",
+      "Five-course specialization by Andrew Ng — built neural networks from scratch in NumPy before moving to TensorFlow, covering backpropagation, CNNs for image tasks, sequence models (RNNs, LSTMs, attention), and practical aspects of hyperparameter tuning, regularization, and structuring ML projects.",
     url: "https://www.coursera.org/account/accomplishments/specialization/certificate/EXTTCNXPGS8D",
   },
   {
@@ -203,7 +198,7 @@ export const certificates: Certificate[] = [
     issued: "Issued Feb 2024",
     credentialId: "7GYYFT92429P",
     description:
-      "Comprehensive program covering data analysis fundamentals, data cleaning, visualization, and statistical analysis. Practical experience with tools like SQL, R, Tableau, and spreadsheets for data-driven decision making.",
+      "Eight-course program on the end-to-end data analytics workflow — asking the right questions, cleaning and preparing data in spreadsheets and SQL, exploratory analysis in R, and communicating findings through Tableau dashboards. Case study on a bike-share company informed the capstone.",
     url: "https://www.coursera.org/account/accomplishments/specialization/certificate/7GYYFT92429P",
   },
 ]
