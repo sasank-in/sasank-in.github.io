@@ -49,7 +49,7 @@ export const profile = {
     "I build backend systems for computer vision and ML workloads — training pipelines, inference APIs, and the infrastructure that keeps models running reliably in production.",
   avatarSrc: "/sasank-nukala-headshot.jpg",
   resumeUrl:
-    "https://drive.google.com/file/d/1IiLbFjKzvSq6PFoAXRzizTK6K3KKn2Si/view?usp=drive_link",
+    "https://drive.google.com/file/d/16VULoUNZO3bwLS7iD0_EejPKy_EEj8TU/view?usp=drive_link",
   social: {
     github: "https://github.com/sasank-in",
     linkedin: "https://linkedin.com/in/sasank-nukala",

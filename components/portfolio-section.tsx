@@ -284,9 +284,9 @@ export default function PortfolioSection() {
           </div>
         </div>
 
-        {/* Certificates & Achievements */}
-        <div id="certificates" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
-          <h2 className="text-2xl font-bold text-foreground mb-8">Certificates & Achievements</h2>
+        {/* Certifications & Achievements */}
+        <div id="certifications" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Certifications & Achievements</h2>
 
           <div className="space-y-4">
             {certificates.map((certificate) => (
@@ -338,7 +338,7 @@ export default function PortfolioSection() {
                       )}
                       <Button variant="link" className="p-0 h-auto text-primary" asChild>
                         <a href={certificate.url} target="_blank" rel="noopener noreferrer">
-                          View Certificate
+                          View Certification
                         </a>
                       </Button>
                     </CardContent>
