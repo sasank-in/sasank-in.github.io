@@ -14,9 +14,6 @@ export const metadata: Metadata = {
   title: "Sasank Nukala — Backend & ML Engineer",
   description:
     "Backend and machine learning engineer building computer vision systems, ML pipelines, and inference APIs.",
-  icons: {
-    icon: "/icon.svg",
-  },
   openGraph: {
     title: "Sasank Nukala — Backend & ML Engineer",
     description:

@@ -16,6 +16,33 @@ const links = [
 
 export function NavBar() {
   const [open, setOpen] = React.useState(false)
+  const menuRef = React.useRef<HTMLDivElement>(null)
+  const buttonRef = React.useRef<HTMLButtonElement>(null)
+
+  React.useEffect(() => {
+    if (!open) return
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Node
+      if (
+        menuRef.current && !menuRef.current.contains(target) &&
+        buttonRef.current && !buttonRef.current.contains(target)
+      ) {
+        setOpen(false)
+      }
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false)
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+    document.addEventListener("keydown", handleEscape)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+      document.removeEventListener("keydown", handleEscape)
+    }
+  }, [open])
 
   return (
     <>
@@ -40,6 +67,7 @@ export function NavBar() {
       {/* Mobile — floating hamburger */}
       <div className="md:hidden fixed top-4 right-4 z-40">
         <Button
+          ref={buttonRef}
           variant="outline"
           size="icon"
           className="rounded-full bg-background/80 backdrop-blur shadow-md"
@@ -53,7 +81,10 @@ export function NavBar() {
 
       {/* Mobile dropdown panel */}
       {open && (
-        <div className="md:hidden fixed top-16 right-4 z-40 rounded-xl border border-border/50 bg-background/95 backdrop-blur shadow-lg p-2 w-48">
+        <div
+          ref={menuRef}
+          className="md:hidden fixed top-16 right-4 z-40 rounded-xl border border-border/50 bg-background/95 backdrop-blur shadow-lg p-2 w-48"
+        >
           <div className="flex flex-col">
             {links.map((link) => (
               <a

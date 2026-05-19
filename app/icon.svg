@@ -1,19 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="AI strength favicon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0B1020"/>
-      <stop offset="1" stop-color="#0B7A75"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
     </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.9"/>
+    </linearGradient>
+    <radialGradient id="node" cx="0.3" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#7DD3FC"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </radialGradient>
   </defs>
-  <rect width="256" height="256" rx="56" fill="url(#g)"/>
-  <path d="M128 42 200 84v88l-72 42-72-42V84l72-42Z" fill="none" stroke="#E2E8F0" stroke-width="10"/>
-  <circle cx="128" cy="128" r="34" fill="none" stroke="#F8FAFC" stroke-width="10"/>
-  <circle cx="128" cy="128" r="10" fill="#F8FAFC"/>
-  <circle cx="128" cy="60" r="6" fill="#F8FAFC"/>
-  <circle cx="196" cy="96" r="6" fill="#F8FAFC"/>
-  <circle cx="196" cy="160" r="6" fill="#F8FAFC"/>
-  <circle cx="128" cy="196" r="6" fill="#F8FAFC"/>
-  <circle cx="60" cy="160" r="6" fill="#F8FAFC"/>
-  <circle cx="60" cy="96" r="6" fill="#F8FAFC"/>
-  <path d="M128 60v34M196 96h-34M196 160h-34M128 196v-34M60 160h34M60 96h34" stroke="#F8FAFC" stroke-width="8" stroke-linecap="round"/>
+
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <g stroke="url(#edge)" stroke-width="1.4" stroke-linecap="round" fill="none">
+    <line x1="16" y1="20" x2="32" y2="14"/>
+    <line x1="16" y1="20" x2="32" y2="32"/>
+    <line x1="16" y1="20" x2="32" y2="50"/>
+    <line x1="16" y1="44" x2="32" y2="14"/>
+    <line x1="16" y1="44" x2="32" y2="32"/>
+    <line x1="16" y1="44" x2="32" y2="50"/>
+    <line x1="32" y1="14" x2="48" y2="32"/>
+    <line x1="32" y1="32" x2="48" y2="32"/>
+    <line x1="32" y1="50" x2="48" y2="32"/>
+  </g>
+
+  <g fill="url(#node)" stroke="#0EA5E9" stroke-width="0.5">
+    <circle cx="16" cy="20" r="4"/>
+    <circle cx="16" cy="44" r="4"/>
+    <circle cx="32" cy="14" r="4"/>
+    <circle cx="32" cy="32" r="4"/>
+    <circle cx="32" cy="50" r="4"/>
+    <circle cx="48" cy="32" r="5"/>
+  </g>
+
+  <circle cx="48" cy="32" r="7" fill="none" stroke="#7DD3FC" stroke-width="0.8" opacity="0.55"/>
 </svg>

@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { FooterYear } from "@/components/footer-year"
+import { ProjectImage } from "@/components/project-image"
 import {
   certificates,
   education,
@@ -78,9 +80,9 @@ export default function PortfolioSection() {
                     <MapPin className="h-4 w-4" />
                     {profile.location}
                   </p>
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-300">
+                    <span className="relative flex h-2 w-2" aria-hidden="true">
+                      <span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-emerald-500 opacity-75"></span>
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
                     </span>
                     {profile.availability}
@@ -137,11 +139,15 @@ export default function PortfolioSection() {
           <h2 className="text-2xl font-bold text-foreground mb-8">Skills & Tools</h2>
 
           <div className="flex flex-wrap gap-2 justify-center">
-            {skills.map((skill) => (
-              <Badge key={skill} variant="secondary" className="text-sm px-3 py-1">
-                {skill}
-              </Badge>
-            ))}
+            {skills.length === 0 ? (
+              <p className="text-sm text-muted-foreground">Skills coming soon.</p>
+            ) : (
+              skills.map((skill) => (
+                <Badge key={skill} variant="secondary" className="text-sm px-3 py-1 max-w-full break-words">
+                  {skill}
+                </Badge>
+              ))
+            )}
           </div>
         </div>
 
@@ -149,6 +155,9 @@ export default function PortfolioSection() {
         <div id="projects" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Projects</h2>
 
+          {projects.length === 0 && (
+            <p className="text-sm text-muted-foreground">No projects to show yet.</p>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
               <Card
@@ -156,16 +165,14 @@ export default function PortfolioSection() {
                 className="pt-0 overflow-hidden flex flex-col border-border/50 hover:shadow-md transition-shadow duration-200"
               >
                 <div className="relative aspect-video overflow-hidden rounded-t-xl">
-                  <Image
-                    src={project.imageUrl || "/placeholder.svg"}
+                  <ProjectImage
+                    src={project.imageUrl}
                     alt={project.title}
-                    fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle className="text-lg">{project.title}</CardTitle>
+                  <CardTitle className="text-lg line-clamp-2">{project.title}</CardTitle>
                   <CardDescription className="text-sm">
                     {getProjectDescription(project.id, project.description)}
                   </CardDescription>
@@ -223,9 +230,15 @@ export default function PortfolioSection() {
         <div id="experience" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Experience</h2>
 
+          {experiences.length === 0 && (
+            <p className="text-sm text-muted-foreground">Experience coming soon.</p>
+          )}
           <div className="space-y-6">
             {experiences.map((experience) => (
-              <Card key={`${experience.company}-${experience.role}`} className="border-border/50">
+              <Card
+                key={`${experience.company}-${experience.role}-${experience.start}`}
+                className="border-border/50"
+              >
                 <CardContent className="p-6">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
@@ -245,7 +258,32 @@ export default function PortfolioSection() {
                         <Calendar className="h-3 w-3" />
                         {experience.start} – {experience.end} · {experience.duration}
                       </p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{experience.summary}</p>
+                      {experience.highlights && experience.highlights.length > 0 ? (
+                        <ul className="space-y-1.5 mb-3">
+                          {experience.highlights.map((item) => (
+                            <li
+                              key={item}
+                              className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2"
+                            >
+                              <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary"></span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                          {experience.summary}
+                        </p>
+                      )}
+                      {experience.technologies && experience.technologies.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {experience.technologies.map((tech) => (
+                            <Badge key={tech} variant="outline" className="text-xs">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </CardContent>
@@ -258,9 +296,12 @@ export default function PortfolioSection() {
         <div id="education" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Education</h2>
 
+          {education.length === 0 && (
+            <p className="text-sm text-muted-foreground">Education coming soon.</p>
+          )}
           <div className="space-y-6">
             {education.map((item) => (
-              <Card key={item.school} className="border-border/50">
+              <Card key={`${item.school}-${item.period}`} className="border-border/50">
                 <CardContent className="p-6">
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
@@ -288,6 +329,9 @@ export default function PortfolioSection() {
         <div id="certifications" className="max-w-4xl mx-auto mb-16 scroll-mt-16">
           <h2 className="text-2xl font-bold text-foreground mb-8">Certifications & Achievements</h2>
 
+          {certificates.length === 0 && (
+            <p className="text-sm text-muted-foreground">Certifications coming soon.</p>
+          )}
           <div className="space-y-4">
             {certificates.map((certificate) => (
               <Collapsible
@@ -300,6 +344,12 @@ export default function PortfolioSection() {
                     role="button"
                     tabIndex={0}
                     aria-expanded={!!openCertificates[certificate.id]}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault()
+                        toggleCertificate(certificate.id)
+                      }
+                    }}
                     className="border-border/50 hover:border-accent/50 hover:shadow-md transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   >
                     <CardContent className="p-6">
@@ -355,7 +405,7 @@ export default function PortfolioSection() {
             <CardContent className="p-8 text-center">
               <h2 className="text-2xl font-bold text-foreground mb-2">Get in touch</h2>
               <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                Open to backend and ML engineering roles. Drop a note or book a quick chat — I usually reply within a day.
+                Open to backend and ML engineering roles. Email or message me on LinkedIn — I usually reply within a day.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button asChild>
@@ -380,7 +430,7 @@ export default function PortfolioSection() {
         </div>
 
         <footer className="max-w-4xl mx-auto border-t border-border/50 pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {profile.name} · Built with Next.js &amp; shadcn/ui
+          © <FooterYear /> {profile.name} · Built with Next.js &amp; shadcn/ui
         </footer>
       </div>
     </div>

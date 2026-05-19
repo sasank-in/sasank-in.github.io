@@ -21,6 +21,8 @@ export interface Experience {
   end: string
   duration: string
   summary: string
+  highlights?: string[]
+  technologies?: string[]
 }
 
 export interface Education {
@@ -65,17 +67,17 @@ export const skills = [
   "Java",
   "SQL",
   "FastAPI",
+  "Django REST Framework",
   "Spring Boot",
   "Spring Cloud",
-  "Django REST Framework",
   "Microservices",
   "PyTorch",
-  "LLM's",
-  "Model Fine-tuning",
   "Deep Learning",
-  "YOLO",
+  "LLMs",
+  "Model Fine-tuning",
   "LangChain",
-  "Dataset Annotation",
+  "YOLO",
+  "Data Annotation",
   "Git",
 ]
 
@@ -84,7 +86,7 @@ export const projects: Project[] = [
     id: "1",
     title: "Tennis Match Analysis System",
     description:
-      "High-performance computer vision system for industrial quality control with sub-millisecond inference times. Utilized PyTorch and CUDA for optimized model training and inference, and YOLO for accurate object detection. Implemented TrackNet architecture for robust ball detection.",
+      "Real-time computer vision pipeline that tracks players, the ball, and court geometry from match footage. YOLO handles player and court keypoint detection; a TrackNet model trained on PyTorch + CUDA recovers the high-speed ball trajectory frame-by-frame.",
     technologies: ["PyTorch", "CUDA", "OpenCV", "YOLO", "TrackNet"],
     imageUrl: "/tennis-analysis.jpg",
     link: {
@@ -108,8 +110,8 @@ export const projects: Project[] = [
     id: "3",
     title: "Agriculture Trading Platform For Farmers And Retailers",
     description:
-      "Advanced application for facilitating trade between farmers and retailers, providing a seamless platform for buying and selling agricultural products.",
-    technologies: ["Spring Boot", "Spring Cloud", "PostgreSQL","Microservices"],
+      "Spring Boot microservices platform connecting farmers directly with retailers — service-to-service communication via Spring Cloud, and a React frontend for listing produce, placing orders, and tracking transactions end-to-end.",
+    technologies: ["Spring Boot", "Spring Cloud", "React","Microservices"],
     imageUrl: "/autonomous-vehicle-segmentation.png",
     link: {
       label: "GitHub",
@@ -121,7 +123,7 @@ export const projects: Project[] = [
     title: "Resume Intelligence & Job Recommendation Platform",
     description:
       "AI-powered platform that analyzes resumes, extracts key information, and generates intelligent summaries and insights. Utilizes NLP pipelines to process resume documents and provide structured outputs for easier candidate evaluation.",
-    technologies: ["Python", "LangChain", "PyTorch", "FastAPI", "NLP"],
+    technologies: ["LangChain", "RAG", "PyTorch", "Large Language Models"],
     imageUrl: "/diffusion-model-synthetic-data.png",
     link: {
       label: "GitHub",
@@ -139,7 +141,13 @@ export const experiences: Experience[] = [
     end: "Sep 2025",
     duration: "9 mos",
     summary:
-      "Leading the development of scalable ML infrastructure and deployment pipelines. Architected distributed training systems that reduced model training time by 60%. Implemented MLOps best practices including automated testing, monitoring, and continuous deployment for production ML models. Built REST APIs for serving model inference and structured analytics data.",
+      "Owned ML infrastructure and deployment pipelines end-to-end — architected distributed training that cut model training time by 60%, stood up MLOps practices for production deployments, and shipped REST APIs serving model inference and analytics data.",
+    highlights: [
+      "Cut model training time by 60% by architecting distributed training across multi-GPU workloads.",
+      "Stood up MLOps foundations — automated testing, monitoring, and continuous deployment for production ML models.",
+      "Shipped REST APIs serving model inference and structured analytics data to downstream services.",
+    ],
+    technologies: ["Python", "PyTorch", "FastAPI", "Azure", "AWS", "MLOps"],
   },
   {
     role: "Python Developer Intern",
@@ -149,7 +157,13 @@ export const experiences: Experience[] = [
     end: "Jun 2024",
     duration: "4 mos",
     summary:
-      "Developed backend services for a payroll management system using Django REST Framework. Implemented secure authentication using JWT, designed relational database schemas, and automated scheduled tasks using Celery for payroll processing workflows.",
+      "Built a payroll management backend end-to-end in Django REST Framework — JWT-secured APIs, relational schema design from scratch, and Celery-driven workflows that eliminated manual scheduling for recurring payroll runs.",
+    highlights: [
+      "Built a payroll management backend end-to-end in Django REST Framework, covering API, data, and scheduling layers.",
+      "Designed relational schemas from scratch and secured APIs with JWT-based authentication.",
+      "Automated recurring payroll workflows using Celery, eliminating manual scheduling and reducing operator overhead.",
+    ],
+    technologies: ["Python", "Django REST Framework", "JWT", "Celery", "PostgreSQL"],
   },
 ]
 
@@ -166,7 +180,7 @@ export const education: Education[] = [
     program: "Intermediate (MPC) - Mathematics, Physics & Chemistry",
     period: "2020 - 2022",
     summary:
-      "Higher secondary education with the MPC stream — the math and physics grounding that made the jump into ML and systems work feel natural rather than abrupt.",
+      "Higher secondary education in the MPC stream, building the mathematics and physics foundation that underpins later work in machine learning and systems engineering.",
   },
 ]
 
